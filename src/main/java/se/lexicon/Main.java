@@ -1,17 +1,23 @@
 package se.lexicon;
 
+import se.lexicon.model.Person;
+import se.lexicon.model.TodoItem;
+import se.lexicon.model.TodoItemTask;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+    public static void main(String[] args) {
+    Person p1 = new Person(1, "Zackaria", "Azzoug", "Azzoug.zackaria@gmail.com");
+    TodoItem item = new TodoItem(101, "Change tires", "Winter is coming",
+        java.time.LocalDate.of(2025, 12, 1), p1);
+    TodoItemTask task = new TodoItemTask(501, item, p1);
+System.out.println(p1.getSummary());
+System.out.println(item.getSummary());
+System.out.println(task.getSummary());
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+task.setAssignee(null);
+        System.out.println("assigned after null? " + task.isAssigned());
+
     }
 }
